@@ -60,8 +60,7 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
     - Notas: {notas}
     - Acceso: {acceso}
 
-    Saludos,
-    Tu Restaurante
+    Saludos
     """
     mensaje.attach(MIMEText(cuerpo_mensaje, 'plain'))
 
