@@ -28,7 +28,6 @@ def contacto(request):
         enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso)
 
         return HttpResponse("Reservación enviada con éxito")
-
     return render(request, 'index.html')
 
 
@@ -36,8 +35,8 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
     # Configura el servidor SMTP
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_user = 'carloseduardog310@gmail.com'  # Cambia esto por tu correo real
-    smtp_password = 'pnfx ptkv qwir omvq '      # Cambia esto por tu contraseña real
+    smtp_user = 'carloseduardog310@gmail.com'  #correo principal
+    smtp_password = 'pnfx ptkv qwir omvq'      #contraseña a utilizar (contraseña de apps)
 
     # Crea el mensaje
     mensaje = MIMEMultipart()
