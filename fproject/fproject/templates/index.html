@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reservación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Formulario de Reservación</h1>
+
+<form method="post" action="{% url 'contacto' %}">
+    {% csrf_token %}
+    
+    <label for="nombre">Nombre del Cliente:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="correo">Correo Electrónico:</label>
+    <input type="email" id="correo" name="correo" required>
+
+    <label for="telefono">Número de Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" required>
+
+    <label for="numero_personas">Número de Personas:</label>
+    <input type="number" id="numero_personas" name="numero_personas" min="1" required>
+
+    <label for="fecha">Fecha de la Reserva:</label>
+    <input type="date" id="fecha" name="fecha" required>
+
+    <label for="hora">Hora de la Reserva:</label>
+    <input type="time" id="hora" name="hora" required>
+
+    <label for="tipo_reserva">Tipo de Reserva:</label>
+    <select id="tipo_reserva" name="tipo_reserva" required>
+        <option value="">Seleccione una opción</option>
+        <option value="mesa">Mesa</option>
+        <option value="salón">Salón</option>
+    </select>
+
+    <label for="notas">Notas:</label>
+    <textarea id="notas" name="notas"></textarea>
+
+    <label for="acceso">Acceso:</label>
+    <input type="text" id="acceso" name="acceso">
+
+    <button type="submit">Enviar Reservación</button>
+</form>
+
+</body>
+</html>
