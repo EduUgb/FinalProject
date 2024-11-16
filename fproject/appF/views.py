@@ -4,8 +4,8 @@ from django.shortcuts import render
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
-
+from .models import Reserv
+import uuid
 def inicio(request):
     return HttpResponse("<h1>Bienvenido a mi sitio web en Django</h1>")
 
@@ -24,8 +24,12 @@ def contacto(request):
         notas = request.POST.get('notas')
         acceso = request.POST.get('acceso')
 
+
         # Llama a la función para enviar el correo
         enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso)
+
+        #llama la base
+        Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso)
 
         return HttpResponse("Reservación enviada con éxito")
     return render(request, 'index.html')
@@ -73,3 +77,22 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
         print("Correo enviado con éxito")
     except Exception as e:
         print(f"Error al enviar el correo: {e}")
+
+
+
+
+def Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso):
+     nueva_reserva = Reserv(
+            nombre=nombre,
+            correo=correo,
+            telefono=telefono,
+            numPersonas=numero_personas,
+            fecha=fecha,
+            hora=hora,
+            tipo=tipo_reserva,
+            nota=notas,
+            acceso=acceso
+        )
+     #guarda en la base  de datos
+
+     nueva_reserva.save()
