@@ -3,9 +3,13 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import smtplib
 from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from .models import Reserv
+from email import encoders
 import uuid
+import os
+from django.conf import settings
 def inicio(request):
     return HttpResponse("<h1>Bienvenido a mi sitio web en Django</h1>")
 
@@ -41,6 +45,7 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
     smtp_port = 587
     smtp_user = 'carloseduardog310@gmail.com'  #correo principal
     smtp_password = 'pnfx ptkv qwir omvq'      #contraseña a utilizar (contraseña de apps)
+    sesion_smtp = smtplib.SMTP('smtp.gmail.com', 587)
 
     # Crea el mensaje
     mensaje = MIMEMultipart()
@@ -68,12 +73,28 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
     """
     mensaje.attach(MIMEText(cuerpo_mensaje, 'plain'))
 
+    # Abrimos el archivo que vamos a adjuntar
+    ruta_adjunto = os.path.join(settings.MEDIA_ROOT, 'Github.png')
+    qr = open(ruta_adjunto, 'rb')
+
+
+    parte = MIMEBase('application', 'octet-stream')
+    parte.set_payload(qr.read())
+    encoders.encode_base64(parte)
+    parte.add_header(
+        'Content-Disposition',
+        f'attachment; filename={os.path.basename(ruta_adjunto)}'
+    )
+    mensaje.attach(parte)
+
+
     # Envía el correo
     try:
         with smtplib.SMTP(smtp_server, smtp_port) as server:
             server.starttls()  # Activa la encriptación
             server.login(smtp_user, smtp_password)  # Inicia sesión
             server.sendmail(mensaje['From'], mensaje['To'], mensaje.as_string())  # Envía el correo
+            sesion_smtp.quit()
         print("Correo enviado con éxito")
     except Exception as e:
         print(f"Error al enviar el correo: {e}")
@@ -96,3 +117,4 @@ def Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva
      #guarda en la base  de datos
 
      nueva_reserva.save()
+

@@ -42,44 +42,66 @@
 </head>
 <body>
 
-<h1>Formulario de Reservación</h1>
+<div class="container mt-5">
+    <h2 class="text-center">Formulario de Reservación</h2>
+    <form method="post" action="{% url 'contacto' %}" class="mt-4">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nombre">Nombre del Cliente:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="off">
+        </div>
 
-<form method="post" action="{% url 'contacto' %}">
-    {% csrf_token %}
-    
-    <label for="nombre">Nombre del Cliente:</label>
-    <input type="text" id="nombre" name="nombre" required autocomplete="off">
+        <div class="form-group">
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" class="form-control" id="correo" name="correo" required>
+        </div>
 
-    <label for="correo">Correo Electrónico:</label>
-    <input type="email" id="correo" name="correo" required>
+        <div class="form-group">
+            <label for="telefono">Número de Teléfono:</label>
+            <input type="tel" class="form-control" id="telefono" name="telefono" required>
+        </div>
 
-    <label for="telefono">Número de Teléfono:</label>
-    <input type="tel" id="telefono" name="telefono" required>
+        <div class="form-group">
+            <label for="numero_personas">Número de Personas:</label>
+            <input type="number" class="form-control" id="numero_personas" name="numero_personas" min="1" required>
+        </div>
 
-    <label for="numero_personas">Número de Personas:</label>
-    <input type="number" id="numero_personas" name="numero_personas" min="1" required>
+        <div class="form-group">
+            <label for="fecha">Fecha de la Reserva:</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" required>
+        </div>
 
-    <label for="fecha">Fecha de la Reserva:</label>
-    <input type="date" id="fecha" name="fecha" required>
+        <div class="form-group">
+            <label for="hora">Hora de la Reserva:</label>
+            <input type="time" class="form-control" id="hora" name="hora" required>
+        </div>
 
-    <label for="hora">Hora de la Reserva:</label>
-    <input type="time" id="hora" name="hora" required>
+        <div class="form-group">
+            <label for="tipo_reserva">Tipo de Reserva:</label>
+            <select class="form-control" id="tipo_reserva" name="tipo_reserva" required>
+                <option value="">Seleccione una opción</option>
+                <option value="mesa">Mesa</option>
+                <option value="salón">Salón</option>
+            </select>
+        </div>
 
-    <label for="tipo_reserva">Tipo de Reserva:</label>
-    <select id="tipo_reserva" name="tipo_reserva" required>
-        <option value="">Seleccione una opción</option>
-        <option value="mesa">Mesa</option>
-        <option value="salón">Salón</option>
-    </select>
+        <div class="form-group">
+            <label for="notas">Notas:</label>
+            <textarea class="form-control" id="notas" name="notas"></textarea>
+        </div>
 
-    <label for="notas">Notas:</label>
-    <textarea id="notas" name="notas"></textarea>
+        <div class="form-group">
+            <label for="acceso">Acceso:</label>
+            <input type="text" class="form-control" id="acceso" name="acceso">
+        </div>
 
-    <label for="acceso">Acceso:</label>
-    <input type="text" id="acceso" name="acceso">
+        <button type="submit" class="btn btn-primary btn-block">Enviar Reservación</button>
+    </form>
+</div>
 
-    <button type="submit">Enviar Reservación</button>
-</form>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
