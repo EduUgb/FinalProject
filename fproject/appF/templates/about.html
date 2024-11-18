@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú del Café</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylemenu.css' %}">
+  </head>
+  <body class="men">
+
+    <nav class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">•••</button>
+            <div class="dropdown-content">
+                <a href="#">Opción 1</a>
+                <a href="#">Opción 2</a>
+                <a href="#">Opción 3</a>
+            </div>
+        </div>
+    </nav>
+    <div class="menu">
+      <header>
+        <h1>BerlFood</h1>
+        <p class="established">Est. 2024</p>
+      </header>
+      <hr />
+      <main>
+        <section>
+          <h2>Delicias de Café</h2>
+          <img
+            src="https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg"
+            alt="ícono de café"
+          />
+          <article class="item">
+            <p class="flavor">Cappuccino Clásico</p>
+            <p class="price">$1.31</p> <!-- Aproximadamente 150 colones -->
+          </article>
+          <article class="item">
+            <p class="flavor">Caramel Macchiato</p>
+            <p class="price">$2.38</p> <!-- Aproximadamente 275 colones -->
+          </article>
+          <article class="item">
+            <p class="flavor">Café Filtrado</p>
+            <p class="price">$1.31</p> <!-- Aproximadamente 150 colones -->
+          </article>
+          <article class="item">
+            <p class="flavor">Avellana</p>
+            <p class="price">$3.45</p> <!-- Aproximadamente 300 colones -->
+          </article>
+          <article class="item">
+            <p class="flavor">Mocha</p>
+            <p class="price">$4.02</p> <!-- Aproximadamente 350 colones -->
+          </article>
+        </section>
+        <section>
+          <h2>Centro de Bocadillos</h2>
+          <img
+            src="https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg"
+            alt="ícono de pastel"
+          />
+          <article class="item">
+            <p class="dessert">Galletas</p>
+            <p class="price">$0.58</p> <!-- Aproximadamente 50 colones -->
+          </article>
+          <article class="item">
+            <p class="dessert">Donut</p>
+            <p class="price">$1.38</p> <!-- Aproximadamente 120 colones -->
+          </article>
+          <article class="item">
+            <p class="dessert">Tarta de Queso</p>
+            <p class="price">$3.45</p> <!-- Aproximadamente 300 colones -->
+          </article>
+          <article class="item">
+            <p class="dessert">Pan de Ajo</p>
+            <p class="price">$0.92</p> <!-- Aproximadamente 80 colones -->
+          </article>
+        </section>
+      </main>
+      <hr class="bottom-line" />
+      <footer>
+        <p>
+          <a href="https://www.google.com" target="_blank"
+            >Visita nuestro sitio web</a
+          >
+        </p>
+        <p class="address">Copyright © 2022</p>
+      </footer>
+    </div>
+  </body>
+</html>

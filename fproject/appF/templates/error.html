@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/lleno.css' %}">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+
+<body class="container">
+	<nav class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">•••</button>
+            <div class="dropdown-content">
+                <a href="#">Opción 1</a>
+                <a href="#">Opción 2</a>
+                <a href="#">Opción 3</a>
+            </div>
+        </div>
+    </nav>
+	<div class="face">
+		<div class="band">
+			<div class="blue"></div>
+			<div class="white"></div>
+			<div class="blue"></div>
+		</div>
+		<div class="eyes"></div>
+		<div class="dimples"></div>
+		<div class="mouth"></div>
+	</div>
+	
+	<h1>¡La fecha y hora ya están reservadas !</h1>
+	<h2>¡Por favor, elija otra fecha y hora!</h2>
+	<a  href="{% url 'contacto' %}">
+	<div class="btn">Volver al Formulario</div>
+	</a>
+	</body>
+	</html>

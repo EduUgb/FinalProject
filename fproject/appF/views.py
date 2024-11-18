@@ -7,11 +7,14 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from .models import Reserv
 from email import encoders
-import uuid
 import os
 from django.conf import settings
 def inicio(request):
     return HttpResponse("<h1>Bienvenido a mi sitio web en Django</h1>")
+
+def about(request):
+    return render(request, 'about.html')
+
 
 def index(request):
     return render(request,  'index.html')
@@ -27,8 +30,11 @@ def contacto(request):
         tipo_reserva = request.POST.get('tipo_reserva')
         notas = request.POST.get('notas')
         acceso = request.POST.get('acceso')
-
-
+    
+        reservasExis = Reserv.objects.filter(fecha=fecha, hora=hora)
+        if reservasExis.exists():
+            return render(request, 'error.html')
+        
         # Llama a la función para enviar el correo
         enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso)
 
@@ -55,22 +61,51 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
 
     # Crea el cuerpo del mensaje
     cuerpo_mensaje = f"""
-    Hola {nombre},
+    ¡Hola {nombre}!
 
-    Gracias por su reservación. Aquí están los detalles:
+    ¡Gracias por elegir BerlFood para tu próxima experiencia gastronómica! Nos complace confirmar tu reservación y estamos emocionados de ofrecerte una experiencia única en nuestro restaurante.
 
-    - Nombre: {nombre}
-    - Correo: {correo}
-    - Teléfono: {telefono}
-    - Número de Personas: {numero_personas}
-    - Fecha: {fecha}
-    - Hora: {hora}
-    - Tipo de Reserva: {tipo_reserva}
-    - Notas: {notas}
-    - Acceso: {acceso}
+    Aquí están los detalles de tu reservación:
 
-    Saludos
+    🌟 **Nombre del Cliente**: {nombre}
+
+    📧 **Correo Electrónico**: {correo} 
+
+    📞 **Teléfono**: {telefono}  
+
+    🍽️ **Número de Personas**: {numero_personas} 
+
+    📅 **Fecha de la Reserva**: {fecha} 
+    
+    ⏰ **Hora de la Reserva**: {hora}
+     
+    🍷 **Tipo de Reserva**: {tipo_reserva}  
+
+    📝 **Notas**: {notas}
+
+    🔑 **Acceso Especial**: {acceso}
+
+    En BerlFood, nos enorgullece ofrecer una atmósfera cálida y acogedora, donde cada plato es una obra maestra. Ya sea que vengas a disfrutar de una deliciosa cena en nuestra exclusiva área de mesas o en el salón reservado, nuestro equipo se asegurará de que tu visita sea memorable.
+
+    Para facilitar tu llegada, hemos asignado un código QR con información importante sobre tu reservación y nuestro restaurante. ¡No olvides mostrarlo al llegar!
+    
+    ¡Tambien hemos colocado el código QR con el menú de nuestro restaurante!
+
+    Si tienes alguna petición especial o necesitas ajustar tu reserva, no dudes en contactarnos. Estamos aquí para hacer de tu experiencia algo inolvidable.
+
+    ¡Nos vemos pronto en BerlFood, donde cada comida es una celebración!
+    
+    Con cariño,  
+    El equipo de BerlFood 
+
+    📍 **Dirección**: Calle de la Gastronomía, 123, Zona Gastronómica, Ciudad Gourmet
+
+    📞 **Teléfono**: +5037418-2650  
+
+    ---
+    Por favor, guarda este código QR en tu dispositivo para acceder fácilmente a la información relacionada con tu reservación.
     """
+
     mensaje.attach(MIMEText(cuerpo_mensaje, 'plain'))
 
     # Abrimos el archivo que vamos a adjuntar
