@@ -3,26 +3,79 @@
 
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vinculación del CSS -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/lleno.css' %}">
-	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'css/lleno.css' %}">
 
-</head>
+  	<header>
+    <h1>BerlFood</h1>
+    <p>Un lugar donde el café y la comodidad se encuentran</p>
+        </header>
+
+    <nav>
+        <a href="{% url 'inicio' %}"> Inicio</a>
+        <a href="{% url 'about' %}"> Menú</a>
+        <a href="{% url 'contacto' %}"> Reservación</a>
+        <a href="{% url 'about' %}"> Contacto</a>
+    </nav>
+
+
+
+    <style >   
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+        
+        .container {
+            background-color: #f4d8b7;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        }
+        label {
+        display: block;
+        margin: 10px 0 5px;
+        color: rgb(0, 0, 0);
+        }
+        form {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: px solid #000000;
+        border-radius: 5px;
+        }
+
+
+
+        input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #1a1c08;
+        border-radius: 4px;
+        background-color: #faedcd;
+        }
+        .my-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+
+
+
+    </style>
 
 <body class="container">
-	<nav class="navbar">
-        <div class="dropdown">
-            <button class="dropbtn">•••</button>
-            <div class="dropdown-content">
-                <a href="#">Opción 1</a>
-                <a href="#">Opción 2</a>
-                <a href="#">Opción 3</a>
-            </div>
-        </div>
-    </nav>
+
 	<div class="face">
 		<div class="band">
 			<div class="blue"></div>
@@ -40,4 +93,5 @@
 	<div class="btn">Volver al Formulario</div>
 	</a>
 	</body>
+
 	</html>

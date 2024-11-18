@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BerlFood - Tu Cafetería Favorita</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdf5e6;
+        }
+
+        header {
+            background-color: #d3a373;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #8d6e63;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffab91;
+        }
+
+        .promo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .promo {
+            width: 300px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .promo:hover {
+            transform: scale(1.05);
+        }
+
+        .promo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .promo:hover::after {
+            opacity: 1;
+        }
+
+        .promo h3 {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #fff;
+            margin: 0;
+        }
+
+        .about {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .text-section {
+            text-align: justify;
+            padding: 20px 40px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        footer {
+            background-color: #d3a373;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BerlFood</h1>
+        <p>Un lugar donde el café y la comodidad se encuentran</p>
+    </header>
+
+    <nav>
+        <a href="{% url 'inicio' %}"> Inicio</a>
+        <a href="{% url 'about' %}"> Menú</a>
+        <a href="{% url 'contacto' %}"> Reservación</a>
+        <a href="{% url 'about' %}"> Contacto</a>
+    </nav>
+
+    
+    <section class="text-section">
+        <h2>What is Lorem Ipsum?</h2>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        <p>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. 
+            Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, 
+            accompanied by English versions from the 1914 translation by H. Rackham.
+        </p>
+    </section>
+
+    <section class="promo-container">
+        <div class="promo" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWJXjbX2KbpQn8mhgDZhH5SHOcOtYtYgQvCw&s');">
+            <h3>2x1 en capuchinos</h3>
+        </div>
+        <div class="promo" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJw6qBUnIJXH3HoE3CBaBfrRkfLV-4kt45RA&s');">
+            <h3>Desayuno especial</h3>
+        </div>
+        <div class="promo" style="background-image: url('https://media.traveler.es/photos/61377fee06df43bef2d320e9/master/w_320%2Cc_limit/24674.jpg');">
+            <h3>Ambiente acogedor</h3>
+        </div>
+    </section>
+
+    
+    <section class="text-section">
+        <h2>Why do we use it?</h2>
+        <p>
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
+            as opposed to using 'Content here, content here', making it look like readable English. 
+            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, 
+            and a search for 'lorem ipsum' will uncover many web sites still in their infancy. 
+            Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+        </p>
+        <p>
+            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, 
+            by injected humour, or randomised words which don't look even slightly believable. 
+            If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle
+            of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, 
+            making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, 
+            combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. 
+            The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+        </p>
+    </section>
+
+
+
+<section class="video-promo" style="text-align: center; padding: 40px 20px;">
+    <h2>Café de la más alta calidad</h2>
+    <div style="margin-bottom: 40px;">
+        <iframe width="700" height="350" src="https://www.youtube.com/embed/0jIeCAOkgcQ" title="Coffee reels - macro videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</section>
+
+
+    <section class="about">
+        <h2>Sobre nosotros</h2>
+        <p>
+            En BerlFood, nos apasiona crear experiencias inolvidables. Ofrecemos café de alta calidad, deliciosa
+            comida artesanal y un ambiente relajante. Visítanos y déjanos ser parte de tu día.
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 BerlFood. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+

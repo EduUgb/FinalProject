@@ -22,10 +22,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', inicio),
-    path('', contacto, name='contacto'),  # Vista de índice
+    path('PPrinci/', inicio),
+    path('', inicio, name='inicio'),  # Vista de índice
     path('contacto/', contacto, name='contacto'),  # Vista de contacto
     path('about/', about, name='about'), 
+    path('PPrinci/', about, name='inicio'), 
 ]
 if settings.DEBUG: 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

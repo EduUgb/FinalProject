@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reservación</title>
@@ -10,55 +11,110 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-</head>
+    </head>
+        <header>
+    <h1>BerlFood</h1>
+    <p>Un lugar donde el café y la comodidad se encuentran</p>
+        </header>
 
-<body>
-    <nav class="navbar">
-        <div class="dropdown">
-            <button class="dropbtn">•••</button>
-            <div class="dropdown-content">
-                <a href="#">Opción 1</a>
-                <a href="#">Opción 2</a>
-                <a href="#">Opción 3</a>
-            </div>
-        </div>
+    <nav>
+        <a href="{% url 'inicio' %}"> Inicio</a>
+        <a href="{% url 'about' %}"> Menú</a>
+        <a href="{% url 'contacto' %}"> Reservación</a>
+        <a href="{% url 'about' %}"> Contacto</a>
     </nav>
 
-    <div class="container mt-5">
+
+
+    <style >   
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+        
+        .container {
+            background-color: #f4d8b7;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        }
+        label {
+        display: block;
+        margin: 10px 0 5px;
+        color: rgb(0, 0, 0);
+        }
+        form {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: px solid #000000;
+        border-radius: 5px;
+        }
+
+
+
+        input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #1a1c08;
+        border-radius: 4px;
+        background-color: #faedcd;
+        }
+        .my-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #37474f;
+        }
+
+
+    </style>
+    <body>
+        
+    <div class="container">
         <h2 class="text-center text-white">Formulario de Reservación</h2>
         <form method="post" action="{% url 'contacto' %}" class="mt-4">
             {% csrf_token %}
-            <div class="form-group">
+            <div class="form">
                 <label for="nombre">Nombre del Cliente:</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="off">
             </div>
 
-            <div class="form-group">
+            <div class="form">
                 <label for="correo">Correo Electrónico:</label>
                 <input type="email" class="form-control" id="correo" name="correo" required>
             </div>
 
-            <div class="form-group">
+            <div class="form">
                 <label for="telefono">Número de Teléfono:</label>
                 <input type="tel" class="form-control" id="telefono" name="telefono" required>
             </div>
 
-            <div class="form-group">
+            <div class="form">
                 <label for="numero_personas">Número de Personas:</label>
                 <input type="number" class="form-control" id="numero_personas" name="numero_personas" min="1" required>
             </div>
 
-            <div class="form-group">
+            <div class="form">
                 <label for="fecha">Fecha de la Reserva:</label>
                 <input type="date" class="form-control" id="fecha" name="fecha" required>
             </div>
 
-            <div class="form-group">
+            <div class="form">
                 <label for="hora">Hora de la Reserva:</label>
                 <input type="time" class="form-control" id="hora" name="hora" required>
             </div>
 
-            <div class="form-group">
+            <div class="form">
                 <label for="tipo_reserva">Tipo de Reserva:</label>
                 <select class="form-control" id="tipo_reserva" name="tipo_reserva" required>
                     <option value="">Seleccione una opción</option>
@@ -67,17 +123,18 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form">
                 <label for="notas">Notas:</label>
                 <textarea class="form-control" id="notas" name="notas"></textarea>
             </div>
 
-            <div class="form-group">
+            <div class="form">
                 <label for="acceso">Acceso:</label>
                 <input type="text" class="form-control" id="acceso" name="acceso">
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Enviar Reservación</button>
+            <button type="danger" class="my-button ">Enviar Reservación</button>
+        </div>
         </form>
     </div>
 

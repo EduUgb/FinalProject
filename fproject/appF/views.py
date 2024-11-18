@@ -10,7 +10,7 @@ from email import encoders
 import os
 from django.conf import settings
 def inicio(request):
-    return HttpResponse("<h1>Bienvenido a mi sitio web en Django</h1>")
+    return render(request,'PPrinci.html')
 
 def about(request):
     return render(request, 'about.html')
@@ -89,7 +89,7 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
 
     Para facilitar tu llegada, hemos asignado un código QR con información importante sobre tu reservación y nuestro restaurante. ¡No olvides mostrarlo al llegar!
     
-    ¡Tambien hemos colocado el código QR con el menú de nuestro restaurante!
+    ¡Tambien hemos colocado el menú de nuestro restaurante!
 
     Si tienes alguna petición especial o necesitas ajustar tu reserva, no dudes en contactarnos. Estamos aquí para hacer de tu experiencia algo inolvidable.
 
@@ -109,8 +109,11 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
     mensaje.attach(MIMEText(cuerpo_mensaje, 'plain'))
 
     # Abrimos el archivo que vamos a adjuntar
-    ruta_adjunto = os.path.join(settings.MEDIA_ROOT, 'Github.png')
+    ruta_adjunto = os.path.join(settings.MEDIA_ROOT, 'Verificador.png')
+    ruta_adjunto2 = os.path.join(settings.MEDIA_ROOT, 'menu.png')
+
     qr = open(ruta_adjunto, 'rb')
+    menu = open(ruta_adjunto2, 'rb')
 
 
     parte = MIMEBase('application', 'octet-stream')
@@ -122,6 +125,14 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
     )
     mensaje.attach(parte)
 
+    parte2 = MIMEBase('application', 'octet-stream')
+    parte2.set_payload(menu.read())
+    encoders.encode_base64(parte2)
+    parte2.add_header(
+        'Content-Disposition',
+        f'attachment; filename={os.path.basename(ruta_adjunto2)}'
+    )
+    mensaje.attach(parte2)
 
     # Envía el correo
     try:

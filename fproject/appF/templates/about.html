@@ -1,93 +1,199 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+    
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú del Café</title>
-    <link rel="stylesheet" href="..static/css/estilos.css">
+    <title>Cafe Menu</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/stylemenu.css' %}">
-  </head>
-  <body class="men">
 
-    <nav class="navbar">
-        <div class="dropdown">
-            <button class="dropbtn">•••</button>
-            <div class="dropdown-content">
-                <a href="#">Opción 1</a>
-                <a href="#">Opción 2</a>
-                <a href="#">Opción 3</a>
-            </div>
-        </div>
+    <style>
+        body {
+        background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
+        font-family: sans-serif;
+
+        }
+
+        h1 {
+        font-size: 3rem;
+        margin-top: 0;
+        margin-bottom: 15px;
+        }
+
+        h2 {
+        font-size: 3rem;
+        }
+
+
+        h1,
+        h2,
+        p {
+        text-align: center;
+        }
+
+        .menu {
+        width: 80%;
+        background-color: burlywood;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        max-width: 500px;
+        }
+        img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -25px;
+        }
+        hr {
+        height: 2px;
+        background-color: brown;
+        border-color: brown;
+        }
+
+        .bottom-line {
+        margin-top: 25px;
+        }
+
+        h1,
+        h2 {
+        font-family: sans-serif ;
+        }
+
+        .item p {
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 18px;
+        }
+
+        .flavor,
+        .dessert {
+        text-align: left;
+        width: 75%;
+        }
+
+        .price {
+        text-align: right;
+        width: 24%;
+        }
+
+        /* FOOTER */
+
+        footer {
+        font-size: 14px;
+        }
+
+        .address {
+        margin-bottom: 5px;
+        }
+
+        a {
+        color: rgb(255, 255, 255);
+        }
+
+        a:visited {
+        color: rgb(255, 255, 255);
+        }
+
+        a:hover {
+        color: brown;
+        }
+
+        a:active {
+        color: brown;
+        }
+    </style>
+
+  </head>
+
+  <header>
+    <h1>BerlFood</h1>
+    <p>Un lugar donde el café y la comodidad se encuentran</p>
+        </header>
+
+    <nav>
+        <a href="{% url 'inicio' %}"> Inicio</a>
+        <a href="{% url 'about' %}"> Menú</a>
+        <a href="{% url 'contacto' %}"> Reservación</a>
+        <a href="{% url 'about' %}"> Contacto</a>
     </nav>
+  <body>
+
     <div class="menu">
       <header>
         <h1>BerlFood</h1>
-        <p class="established">Est. 2024</p>
+        <p class="established">Est. 2022</p>
       </header>
       <hr />
       <main>
         <section>
-          <h2>Delicias de Café</h2>
+          <h2>Coffee Delights</h2>
           <img
             src="https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg"
-            alt="ícono de café"
+            alt="coffee icon"
           />
-          <article class="item">
-            <p class="flavor">Cappuccino Clásico</p>
-            <p class="price">$1.31</p> <!-- Aproximadamente 150 colones -->
-          </article>
-          <article class="item">
-            <p class="flavor">Caramel Macchiato</p>
-            <p class="price">$2.38</p> <!-- Aproximadamente 275 colones -->
-          </article>
-          <article class="item">
-            <p class="flavor">Café Filtrado</p>
-            <p class="price">$1.31</p> <!-- Aproximadamente 150 colones -->
-          </article>
-          <article class="item">
-            <p class="flavor">Avellana</p>
-            <p class="price">$3.45</p> <!-- Aproximadamente 300 colones -->
-          </article>
-          <article class="item">
-            <p class="flavor">Mocha</p>
-            <p class="price">$4.02</p> <!-- Aproximadamente 350 colones -->
-          </article>
+
+          <section>
+            <article class="item">
+                <p class="flavor">Capuchino Clásico</p>
+                <p class="price">$1.50</p>
+            </article>
+            <article class="item">
+                <p class="flavor">Macchiato de Caramelo</p>
+                <p class="price">$2.75</p>
+            </article>
+            <article class="item">
+                <p class="flavor">Café Filtrado</p>
+                <p class="price">$1.50</p>
+            </article>
+            <article class="item">
+                <p class="flavor">Avellana</p>
+                <p class="price">$3.00</p>
+            </article>
+            <article class="item">
+                <p class="flavor">Moca</p>
+                <p class="price">$3.50</p>
+            </article>
         </section>
-        <section>
-          <h2>Centro de Bocadillos</h2>
+        
+          <h2>Snack Central</h2>
           <img
             src="https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg"
-            alt="ícono de pastel"
+            alt="pie icon"
           />
-          <article class="item">
-            <p class="dessert">Galletas</p>
-            <p class="price">$0.58</p> <!-- Aproximadamente 50 colones -->
-          </article>
-          <article class="item">
-            <p class="dessert">Donut</p>
-            <p class="price">$1.38</p> <!-- Aproximadamente 120 colones -->
-          </article>
-          <article class="item">
-            <p class="dessert">Tarta de Queso</p>
-            <p class="price">$3.45</p> <!-- Aproximadamente 300 colones -->
-          </article>
-          <article class="item">
-            <p class="dessert">Pan de Ajo</p>
-            <p class="price">$0.92</p> <!-- Aproximadamente 80 colones -->
-          </article>
+          <section>
+            <article class="item">
+                <p class="dessert">Galletas</p>
+                <p class="price">$0.50</p>
+            </article>
+            <article class="item">
+                <p class="dessert">Donas</p>
+                <p class="price">$1.20</p>
+            </article>
+            <article class="item">
+                <p class="dessert">Tarta de Queso</p>
+                <p class="price">$3.00</p>
+            </article>
+            <article class="item">
+                <p class="dessert">Pan de Ajo</p>
+                <p class="price">$0.80</p>
+            </article>
+        </section>
+        
         </section>
       </main>
       <hr class="bottom-line" />
       <footer>
         <p>
           <a href="https://www.google.com" target="_blank"
-            >Visita nuestro sitio web</a
+            >Visit our website</a
           >
         </p>
-        <p class="address">Copyright © 2022</p>
+        <p class="address">'Copyright © 2022'</p>
       </footer>
     </div>
+
   </body>
 </html>
