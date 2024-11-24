@@ -25,7 +25,7 @@ urlpatterns = [
     path('PPrinci/', inicio),
     path('', inicio, name='inicio'),  # Vista de índice
     path('contacto/', contacto, name='contacto'),  # Vista de contacto
-    path('about/', about, name='about'), 
+    path('menu/', about, name='menu'), 
     path('PPrinci/', about, name='inicio'), 
 ]
 if settings.DEBUG: 

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafe Menu</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+
+<header>
+  <h1>BerlFood</h1>
+  <p>Un lugar donde el café y la comodidad se encuentran</p>
+</header>
+
+  <nav >
+      <a href="{% url 'inicio' %}"> Inicio</a>
+      <a href="{% url 'menu' %}"> Menú</a>
+      <a href="{% url 'contacto' %}"> Reservación</a>
+      <a href="{% url 'menu' %}"> Contacto</a>
+  </nav>
+<body id="about">
+
+  <div class="menu">
+    <header class="menuH">
+      <h1 class="menuH1">BerlFood</h1>
+      <p class="established">Est. 2022</p>
+    </header>
+    <hr />
+    <main>
+      <section>
+        <h2 class="menuH2">Delicias de Café </h2>
+        <img
+          src="https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg"
+          alt="coffee icon"
+        /> 
+
+        
+
+        <section>
+          <article class="item">
+              <p class="flavor">Capuchino Clásico</p>
+              <p class="price">$1.50</p>
+          </article>
+          <article class="item">
+              <p class="flavor">Macchiato de Caramelo</p>
+              <p class="price">$2.75</p>
+          </article>
+          <article class="item">
+              <p class="flavor">Café Filtrado</p>
+              <p class="price">$1.50</p>
+          </article>
+          <article class="item">
+              <p class="flavor">Avellana</p>
+              <p class="price">$3.00</p>
+          </article>
+          <article class="item">
+              <p class="flavor">Moca</p>
+              <p class="price">$3.50</p>
+          </article>
+      </section>
+      
+        <h2 class="menuH2">Centro de Bocadillos</h2>
+        <img
+          src="https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg"
+          alt="pie icon"
+        />
+        <section>
+          <article class="item">
+              <p class="dessert">Galletas</p>
+              <p class="price">$0.50</p>
+          </article>
+          <article class="item">
+              <p class="dessert">Donas</p>
+              <p class="price">$1.20</p>
+          </article>
+          <article class="item">
+              <p class="dessert">Tarta de Queso</p>
+              <p class="price">$3.00</p>
+          </article>
+          <article class="item">
+              <p class="dessert">Pan de Ajo</p>
+              <p class="price">$0.80</p>
+          </article>
+      </section>
+      
+      </section>
+    </main>
+    <hr class="bottom-line" />
+    <footer>
+      <p>
+        <a href="https://www.google.com" target="_blank"
+          >Visit our website</a
+        >
+      </p>
+      <p class="address">'Copyright © 2022'</p>
+    </footer>
+  </div>
+  <footer>
+    <p>&copy; 2024 BerlFood. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

@@ -9,79 +9,28 @@
 
     <!-- Vinculación del CSS -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 
     </head>
-        <header>
+
+    <header>
     <h1>BerlFood</h1>
     <p>Un lugar donde el café y la comodidad se encuentran</p>
-        </header>
+    </header>
 
     <nav>
         <a href="{% url 'inicio' %}"> Inicio</a>
-        <a href="{% url 'about' %}"> Menú</a>
+        <a href="{% url 'menu' %}"> Menú</a>
         <a href="{% url 'contacto' %}"> Reservación</a>
-        <a href="{% url 'about' %}"> Contacto</a>
+        <a href="{% url 'menu' %}"> Contacto</a>
     </nav>
 
+    <body id="index">
+        <div class="centroB">
 
 
-    <style >   
-        body {
-            margin: 0;
-            font-family: sans-serif;
-        }
-        
-        .container {
-            background-color: #f4d8b7;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        
-        }
-        label {
-        display: block;
-        margin: 10px 0 5px;
-        color: rgb(0, 0, 0);
-        }
-        form {
-        max-width: 600px;
-        margin: auto;
-        padding: 20px;
-        border: px solid #000000;
-        border-radius: 5px;
-        }
-
-
-
-        input, select, textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #1a1c08;
-        border-radius: 4px;
-        background-color: #faedcd;
-        }
-        .my-button {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #37474f;
-        }
-
-
-    </style>
-    <body>
-        
     <div class="container">
-        <h2 class="text-center text-white">Formulario de Reservación</h2>
+        <h2 class="H2">Formulario de Reservación</h2>
         <form method="post" action="{% url 'contacto' %}" class="mt-4">
             {% csrf_token %}
             <div class="form">
@@ -110,16 +59,45 @@
             </div>
 
             <div class="form">
-                <label for="hora">Hora de la Reserva:</label>
-                <input type="time" class="form-control" id="hora" name="hora" required>
-            </div>
-
-            <div class="form">
                 <label for="tipo_reserva">Tipo de Reserva:</label>
                 <select class="form-control" id="tipo_reserva" name="tipo_reserva" required>
                     <option value="">Seleccione una opción</option>
-                    <option value="mesa">Mesa</option>
+                    <option value="meson">Mesón</option>
                     <option value="salón">Salón</option>
+                </select>
+            </div>
+            <div class="form">
+                <label for="mesa">Mesa:</label>
+                <select class="form-control" id="mesa" name="mesa" required>
+                    <option value="">Seleccione una mesa</option>
+                    <option value="01">Mesa #01</option>
+                    <option value="02">Mesa #02</option>
+                    <option value="03">Mesa #03</option>
+                    <option value="04">Mesa #04</option>
+                    <option value="05">Mesa #05</option>
+                    <option value="06">Mesa #06</option>
+                    <option value="07">Mesa #07</option>
+                    <option value="08">Mesa #08</option>
+                    <option value="09">Mesa #09</option>
+                    <option value="10">Mesa #10</option>
+                    <option value="11">Mesa #11</option>
+                    <option value="12">Mesa #12</option>
+                    <option value="13">Mesa #13</option>
+                </select>
+            </div>
+
+            <div class="form">
+                <label for="Hora">Hora:</label>
+                <select class="form-control" id="Hora" name="Hora" required>
+                    <option value="">Seleccione una hora</option>
+                    <option value="10:00">10:00 am</option>
+                    <option value="12:00">12:00 md</option>
+                    <option value="13:00">01:00 pm</option>
+                    <option value="14:00">02:00 pm</option>
+                    <option value="15:00">03:00 pm</option>
+                    <option value="16:00">04:00 pm</option>
+                    <option value="17:00">05:00 pm</option>
+                    <option value="18:00">06:00 pm</option>
                 </select>
             </div>
 
@@ -130,18 +108,24 @@
 
             <div class="form">
                 <label for="acceso">Acceso:</label>
-                <input type="text" class="form-control" id="acceso" name="acceso">
+                <select class="form-control" id="acceso" name="acceso" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="interior">Interior</option>
+                    <option value="exterior">Exterior</option>
+                </select>
             </div>
-
             <button type="danger" class="my-button ">Enviar Reservación</button>
         </div>
         </form>
     </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
-
+<footer>
+    <p>&copy; 2024 BerlFood. Todos los derechos reservados.</p>
+</footer>
 </html>

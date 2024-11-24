@@ -13,7 +13,7 @@ def inicio(request):
     return render(request,'PPrinci.html')
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'menu.html')
 
 
 def index(request):
@@ -25,27 +25,28 @@ def contacto(request):
         correo = request.POST.get('correo')
         telefono = request.POST.get('telefono')
         numero_personas = request.POST.get('numero_personas')
+        mesa = request.POST.get('mesa')
         fecha = request.POST.get('fecha')
-        hora = request.POST.get('hora')
+        hora = request.POST.get('Hora')
         tipo_reserva = request.POST.get('tipo_reserva')
         notas = request.POST.get('notas')
         acceso = request.POST.get('acceso')
     
-        reservasExis = Reserv.objects.filter(fecha=fecha, hora=hora)
+        reservasExis = Reserv.objects.filter(fecha=fecha, hora=hora, mesa=mesa)
         if reservasExis.exists():
             return render(request, 'error.html')
         
         # Llama a la función para enviar el correo
-        enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso)
+        enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso,mesa)
 
         #llama la base
-        Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso)
+        Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso,mesa)
 
         return HttpResponse("Reservación enviada con éxito")
     return render(request, 'index.html')
 
 
-def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso):
+def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso,mesa):
     # Configura el servidor SMTP
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
@@ -78,6 +79,8 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
     📅 **Fecha de la Reserva**: {fecha} 
     
     ⏰ **Hora de la Reserva**: {hora}
+
+    🪑 **Mesa reservada**: {mesa}
      
     🍷 **Tipo de Reserva**: {tipo_reserva}  
 
@@ -148,7 +151,7 @@ def enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_r
 
 
 
-def Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso):
+def Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso,mesa):
      nueva_reserva = Reserv(
             nombre=nombre,
             correo=correo,
@@ -158,7 +161,8 @@ def Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva
             hora=hora,
             tipo=tipo_reserva,
             nota=notas,
-            acceso=acceso
+            acceso=acceso,
+            mesa=mesa,
         )
      #guarda en la base  de datos
 

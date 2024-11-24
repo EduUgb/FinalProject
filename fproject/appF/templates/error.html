@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Vinculación del CSS -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-	<link rel="stylesheet" href="{% static 'css/lleno.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+	<link rel="stylesheet" href="{% static 'lleno.css' %}">
 
   	<header>
     <h1>BerlFood</h1>
@@ -19,62 +19,16 @@
 
     <nav>
         <a href="{% url 'inicio' %}"> Inicio</a>
-        <a href="{% url 'about' %}"> Menú</a>
+        <a href="{% url 'menu' %}"> Menú</a>
         <a href="{% url 'contacto' %}"> Reservación</a>
-        <a href="{% url 'about' %}"> Contacto</a>
+        <a href="{% url 'menu' %}"> Contacto</a>
     </nav>
 
 
 
-    <style >   
-        body {
-            margin: 0;
-            font-family: sans-serif;
-        }
-        
-        .container {
-            background-color: #f4d8b7;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        
-        }
-        label {
-        display: block;
-        margin: 10px 0 5px;
-        color: rgb(0, 0, 0);
-        }
-        form {
-        max-width: 600px;
-        margin: auto;
-        padding: 20px;
-        border: px solid #000000;
-        border-radius: 5px;
-        }
 
 
-
-        input, select, textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #1a1c08;
-        border-radius: 4px;
-        background-color: #faedcd;
-        }
-        .my-button {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        }
-
-
-
-    </style>
-
-<body class="container">
+<body >
 
 	<div class="face">
 		<div class="band">
@@ -87,11 +41,13 @@
 		<div class="mouth"></div>
 	</div>
 	
-	<h1>¡La fecha y hora ya están reservadas !</h1>
+	<h1 style="color: #000;">¡La fecha y hora ya están reservadas !</h1>
 	<h2>¡Por favor, elija otra fecha y hora!</h2>
 	<a  href="{% url 'contacto' %}">
 	<div class="btn">Volver al Formulario</div>
 	</a>
 	</body>
-
+    <footer>
+        <p>&copy; 2024 BerlFood. Todos los derechos reservados.</p>
+    </footer>
 	</html>
