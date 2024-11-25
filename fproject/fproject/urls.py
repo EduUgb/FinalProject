@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from appF.views import inicio, contacto, about
+from appF.views import inicio, contacto, about, contactos
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -26,7 +26,8 @@ urlpatterns = [
     path('', inicio, name='inicio'),  # Vista de índice
     path('contacto/', contacto, name='contacto'),  # Vista de contacto
     path('menu/', about, name='menu'), 
-    path('PPrinci/', about, name='inicio'), 
+    path('PPrinci/', about, name='inicio'),
+    path('Contact/', contactos, name='contactos'), 
 ]
 if settings.DEBUG: 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

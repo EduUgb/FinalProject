@@ -8,6 +8,7 @@ from email.mime.multipart import MIMEMultipart
 from .models import Reserv
 from email import encoders
 import os
+from django.http import JsonResponse
 from django.conf import settings
 def inicio(request):
     return render(request,'PPrinci.html')
@@ -15,6 +16,8 @@ def inicio(request):
 def about(request):
     return render(request, 'menu.html')
 
+def contactos(request):
+    return render(request, 'Contact.html')
 
 def index(request):
     return render(request,  'index.html')
@@ -35,6 +38,9 @@ def contacto(request):
         reservasExis = Reserv.objects.filter(fecha=fecha, hora=hora, mesa=mesa)
         if reservasExis.exists():
             return render(request, 'error.html')
+        else:context = {
+        'mostrar_modal': True  # Aquí decides si mostrar el modal o no
+        }
         
         # Llama a la función para enviar el correo
         enviar_correo(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso,mesa)
@@ -42,7 +48,7 @@ def contacto(request):
         #llama la base
         Reserva(nombre, correo, telefono, numero_personas, fecha, hora, tipo_reserva, notas, acceso,mesa)
 
-        return HttpResponse("Reservación enviada con éxito")
+        return render(request, 'index.html', context)
     return render(request, 'index.html')
 
 

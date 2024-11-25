@@ -18,20 +18,27 @@
     <p>Un lugar donde el café y la comodidad se encuentran</p>
     </header>
 
-    <nav>
+    <nav >
         <a href="{% url 'inicio' %}"> Inicio</a>
         <a href="{% url 'menu' %}"> Menú</a>
         <a href="{% url 'contacto' %}"> Reservación</a>
-        <a href="{% url 'menu' %}"> Contacto</a>
+        <a href="{% url 'contactos' %}"> Contacto</a>
     </nav>
 
     <body id="index">
-        <div class="centroB">
+    <div class="centroB">
+        <div id="myModal" class="modal" {% if mostrar_modal %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 class="H2">¡Reservación Hecha!</h2>
+                <p>Muchas gracias por reservar con nosotros, recibirá un correo con los datos necesarios.</p>
+            </div>
+        </div>
 
 
     <div class="container">
         <h2 class="H2">Formulario de Reservación</h2>
-        <form method="post" action="{% url 'contacto' %}" class="mt-4">
+        <form id="reservationForm" method="post" action="{% url 'contacto' %}" class="mt-4">
             {% csrf_token %}
             <div class="form">
                 <label for="nombre">Nombre del Cliente:</label>
@@ -40,27 +47,27 @@
 
             <div class="form">
                 <label for="correo">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="correo" name="correo" required>
+                <input type="email" class="form-control" id="correo" name="correo" required autocomplete="off">
             </div>
 
             <div class="form">
                 <label for="telefono">Número de Teléfono:</label>
-                <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                <input type="tel" class="form-control" id="telefono" name="telefono" required autocomplete="off">
             </div>
 
             <div class="form">
                 <label for="numero_personas">Número de Personas:</label>
-                <input type="number" class="form-control" id="numero_personas" name="numero_personas" min="1" required>
+                <input type="number" class="form-control" id="numero_personas" name="numero_personas" min="1" required autocomplete="off">
             </div>
 
             <div class="form">
                 <label for="fecha">Fecha de la Reserva:</label>
-                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                <input type="date" class="form-control" id="fecha" name="fecha" required autocomplete="off">
             </div>
 
             <div class="form">
                 <label for="tipo_reserva">Tipo de Reserva:</label>
-                <select class="form-control" id="tipo_reserva" name="tipo_reserva" required>
+                <select class="form-control" id="tipo_reserva" name="tipo_reserva" required autocomplete="off">
                     <option value="">Seleccione una opción</option>
                     <option value="meson">Mesón</option>
                     <option value="salón">Salón</option>
@@ -68,7 +75,7 @@
             </div>
             <div class="form">
                 <label for="mesa">Mesa:</label>
-                <select class="form-control" id="mesa" name="mesa" required>
+                <select class="form-control" id="mesa" name="mesa" required autocomplete="off">
                     <option value="">Seleccione una mesa</option>
                     <option value="01">Mesa #01</option>
                     <option value="02">Mesa #02</option>
@@ -88,7 +95,7 @@
 
             <div class="form">
                 <label for="Hora">Hora:</label>
-                <select class="form-control" id="Hora" name="Hora" required>
+                <select class="form-control" id="Hora" name="Hora" required autocomplete="off">
                     <option value="">Seleccione una hora</option>
                     <option value="10:00">10:00 am</option>
                     <option value="12:00">12:00 md</option>
@@ -108,14 +115,26 @@
 
             <div class="form">
                 <label for="acceso">Acceso:</label>
-                <select class="form-control" id="acceso" name="acceso" required>
+                <select class="form-control" id="acceso" name="acceso" required autocomplete="off">
                     <option value="">Seleccione una opción</option>
                     <option value="interior">Interior</option>
                     <option value="exterior">Exterior</option>
                 </select>
             </div>
-            <button type="danger" class="my-button ">Enviar Reservación</button>
+            <div class="centroB">   
+                <button  id="showDialog" type="submit" class="my-button " >Enviar Reservación</button>
+            </div>
         </div>
+
+
+        <dialog  id="popupDialog">
+            <h2>¡Bienvenido!</h2>
+            <p>Este es un mensaje en un cuadro de diálogo.</p>
+            <div class="centroB">
+            <button class="my-button" id="closeDialog">Cerrar</button>
+        </div>
+        </dialog>
+
         </form>
     </div>
 </div>
@@ -123,7 +142,18 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Obtener elementos del modal
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
 
+        // Cuando el usuario hace clic en la X, se cierra el modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+</script>
+    
 </body>
 <footer>
     <p>&copy; 2024 BerlFood. Todos los derechos reservados.</p>

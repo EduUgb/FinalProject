@@ -16,4 +16,3 @@ class Reserv(models.Model):
     nota=models.CharField(max_length=200)
     acceso=models.CharField(max_length=100)
 
-

@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f7e3bd;
+    display: flex;
+    flex-direction: column;
 }
 
 .menuH{
@@ -151,6 +153,12 @@ p {
 text-align: center;
 }
 
+.p1{
+    text-align: justify;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
 .menu {
 width: 80%;
 background-color: burlywood;
@@ -202,6 +210,7 @@ width: 24%;
 
 footer {
 font-size: 14px;
+margin-top: auto;
 }
 
 .address {
@@ -291,4 +300,129 @@ cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* emergente  */
+
+dialog {
+    padding: 20px;
+    width: 300px;
+    border:#4CAF50;
+    border-radius: 10px;
+    background-color: #f9f0b4;
+}
+
+.bt {
+    padding: 10px 20px;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: absolute  ;
+    align-items: center;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 178%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff9cb;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid #888;
+    width: 80%;
+    margin-top: 22%;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* */
+
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-header h2 {
+    font-size: 2rem;
+    color: #8d6e63;
+}
+
+.contact-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.contact-item {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #d3a373;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-item i {
+    font-size: 2.5rem;
+    color: #8d6e63;
+    margin-bottom: 10px;
+}
+
+.contact-item h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #444;
+}
+
+.contact-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.map-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
